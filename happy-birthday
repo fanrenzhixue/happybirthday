@@ -1,0 +1,86 @@
+import React, { useState } from "react";
+import "./styles.css"; // 引入动画样式
+
+export default function BirthdayApp() {
+  const [stage, setStage] = useState(0);
+
+  const nextStage = () => setStage((s) => Math.min(s + 1, 4));
+
+  const buttonStyle = {
+    padding: "12px 24px",
+    fontSize: "16px",
+    borderRadius: "12px",
+    border: "none",
+    background: "#ff69b4",
+    color: "white",
+    cursor: "pointer",
+    marginTop: "20px"
+  };
+
+  return (
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "linear-gradient(135deg,#ffd1dc,#c3b1ff)",
+        textAlign: "center",
+        fontFamily: "sans-serif",
+      }}
+    >
+      {stage === 0 && (
+        <div>
+          <h1>🎂 洪悦，生日快乐！</h1>
+          <p>点击开始你的生日惊喜之旅</p>
+          <button style={buttonStyle} onClick={nextStage}>开始</button>
+        </div>
+      )}
+
+      {stage === 1 && (
+        <div>
+          <h2>🕯️ 吹蜡烛环节</h2>
+          <div style={{ fontSize: "60px" }}>🕯️🕯️🕯️</div>
+          <p>点击按钮帮TA吹灭蜡烛吧！</p>
+          <button style={buttonStyle} onClick={nextStage}>吹蜡烛</button>
+        </div>
+      )}
+
+      {stage === 2 && (
+        <div>
+          <h2>✨ 蜡烛已吹灭！</h2>
+          <div style={{ fontSize: "60px" }}>💨</div>
+          <button style={buttonStyle} onClick={nextStage}>继续</button>
+        </div>
+      )}
+
+      {stage === 3 && (
+        <div>
+          <h2>🎆 烟花庆祝！</h2>
+          <div className="pulse" style={{ fontSize: "40px" }}>
+            🎆 🎇 ✨ 🎆 🎇
+          </div>
+          <button style={buttonStyle} onClick={nextStage}>还有惊喜</button>
+        </div>
+      )}
+
+      {stage === 4 && (
+        <div>
+          <h2>🎉 洪悦，生日祝福 🎉</h2>
+          <p>
+            愿你一直被爱包围 💖<br />
+            愿你勇敢追梦 ✨<br />
+            愿未来每一天都闪闪发光 🌟<br />
+            —— 专属你的惊喜页面 🎂
+          </p>
+          <button style={buttonStyle} onClick={() => setStage(0)}>
+            再来一次
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
